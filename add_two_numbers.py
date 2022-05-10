@@ -17,4 +17,6 @@ class solution(object):
             prev = prev.next
             carry //= 10
         return result.next
-        
+print(ord("a"))
+print(chr(67))  
+

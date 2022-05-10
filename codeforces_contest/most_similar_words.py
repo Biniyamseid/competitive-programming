@@ -25,30 +25,5 @@ def solution():
         result.append(res)
     for i in result:
             print(i)
-solution()
-'''6
-2 4
-best
-cost
-6 3
-abb
-zba
-bef
-cdu
-ooo
-zzz
-2 7
-aaabbbc
-bbaezfe
-3 2
-ab
-ab
-ab
-2 8
-aaaaaaaa
-zzzzzzzz
-3 1
-a
-u
-y'''
+
 

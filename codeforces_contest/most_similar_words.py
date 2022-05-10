@@ -25,5 +25,7 @@ def solution():
         result.append(res)
     for i in result:
             print(i)
+S = solution()
+
 
 

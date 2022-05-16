@@ -12,7 +12,7 @@ def addBinary(a,b):
         result += str(carry %2)
         carry //= 2
     return result[::-1]
-print(addBinary("1","11"))
+
 
 
     

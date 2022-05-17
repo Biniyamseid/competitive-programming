@@ -1,5 +1,5 @@
 def isPalindrome(thestring):
-    if len(thestring) == 1 or len(thestring) == 0:
+    if len(thestring) == 1 or len(thestring) == 0 or len(thestring) == 2:
         return True
     else:
         head = thestring[0]
@@ -7,4 +7,4 @@ def isPalindrome(thestring):
         last = thestring[-1]
         return head == last and isPalindrome(middle)
 print(isPalindrome("nan"))
-print(isPalindrome(""))
+print(isPalindrome("th"))

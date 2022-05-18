@@ -4,7 +4,7 @@ def isPalindrome(thestring):
     else:
         head = thestring[0]
         middle = thestring[1:-1]
-        last = thestring[-1]
+        lazst = thestring[-1]
         return head == last and isPalindrome(middle)
 print(isPalindrome("nan"))
 print(isPalindrome("th"))

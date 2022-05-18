@@ -14,3 +14,6 @@ def numberofonebits(num):
         num >>= 1
     return res
 print(numberofonebits(110011))
+print(9&8)
+n = "00000000"
+print(int(n))

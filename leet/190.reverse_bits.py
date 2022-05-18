@@ -1,5 +1,11 @@
 def reversebits(n):
-    pass
+    res = 0
+    for i in range(32):
+        bit = (n>>i)&1
+        res = res | (bit << 31-i)
+    return res
+print(bin(100000000000000000000000000000111))
+print(reversebits(100000000000000000000000000000111))
 
 
 #we can use even and odd to determine the evenness and oddness of a number

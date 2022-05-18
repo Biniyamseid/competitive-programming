@@ -1,18 +1,15 @@
-def reversebits(n):
-    res = 0
-    for i in range(32):
-        bit = (n>>i)&1
-        res = res | (bit << 31-i)
-    return res
-print(bin(100000000000000000000000000000111))
-print(reversebits(100000000000000000000000000000111))
+ def reverseBits(n: int) -> int:
+        res = 0
+        
+        for i in range(32):
+            bit = n>>i & 1
+            print(n,i,bit)
+            res = res | bit << (31 - i)
+            print(res)
+        return res
+#the importance of "|" in res = res | bit << (31 - i)  
+#ዪሄ | ለማስቀመጥ አገልግሎት ነው የሚያገለግለው ማለትም ሬዝ ብለን ያስቀመጥነውን ሳንረሳ update lemadreg yemiyageleglen | or bcha new yihe malet 1 kalen be or operator mechem ayitefebnm.
 
 
-#we can use even and odd to determine the evenness and oddness of a number
-def even_odd(num):
-    odd = 1 & num
-    if odd:
-        return 'Odd'
-    else:
-        return 'even'
-print(even_odd(2))
+
+

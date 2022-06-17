@@ -4,7 +4,48 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "java_codes.Main",
+            "projectName": "competitive_programming_c7783d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "java_codes.Test",
+            "projectName": "competitive_programming_c7783d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test1",
+            "request": "launch",
+            "mainClass": "java_codes.Test1",
+            "projectName": "competitive_programming_c7783d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch the_first",
+            "request": "launch",
+            "mainClass": "java_codes.competitive_programming_in_java.the_first",
+            "projectName": "competitive_programming_c7783d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Neet",
+            "request": "launch",
+            "mainClass": "java_codes.competitive_programming_in_java.Neet",
+            "projectName": "competitive_programming_c7783d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch THE",
+            "request": "launch",
+            "mainClass": "java_codes.competitive_programming_in_java.THE",
+            "projectName": "competitive_programming_c7783d4e"
+        },
         {
             "name": "Python: Current File",
             "type": "python",

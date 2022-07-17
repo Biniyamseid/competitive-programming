@@ -12,6 +12,8 @@ def addBinary(a,b):
         result += str(carry %2)
         carry //= 2
     return result[::-1]
+m = [1,2,3,4,"this"]
+print(m);
 
 
 

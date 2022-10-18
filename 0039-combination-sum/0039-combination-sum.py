@@ -9,6 +9,7 @@ class Solution(object):
             if i>=len(candidates) or total> target:
                 return
             cur.append(candidates[i])
+            print(cur)
             dfs(i,cur,total + candidates[i])
             cur.pop()
             dfs(i+1,cur,total)

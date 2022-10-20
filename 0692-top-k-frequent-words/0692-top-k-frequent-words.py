@@ -6,7 +6,7 @@ class Solution:
                 dict[x] += 1
             else:
                 dict[x] = 1
-        res = sorted(dict, key=lambda x: (-dict[x], x))
+        res = sorted(dict, key=lambda x: (-dict[x],x))
         return res[:k]
             
         

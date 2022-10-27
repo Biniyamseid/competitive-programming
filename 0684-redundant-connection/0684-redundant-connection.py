@@ -1,28 +1,16 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
-        n = len(edges)
-        par = [i for i in range(n+1)]
-        print(par)
-        
+        par = [i for i in range(len(edges)+1)]
         def find(node):
-            #print(node,"start")
-            while par[node] != node:
+            while node != par[node]:
                 node = par[node]
-                #print(node,"middle")
-            #print(node)
             return node
-        def union(n1,n2):
-            
-            p1 = find(n1)
-            p2 = find(n2)
-            if p1 != p2:
-                par[p2] = p1
+        def union(x,y):
+            par1 = find(x)
+            par2 = find(y)
+            par[par2] = par1
         for a,b in edges:
-            #print(a,b)
-           #print(par,'RTWH')
-            if find(a) == find(b): return [a,b]
+            if find(a) == find(b):return[a,b]
             union(a,b)
-            #print(par,"after ")
-            #print("    ")
             
             

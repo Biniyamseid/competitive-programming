@@ -1,50 +1,31 @@
-class DisjointSet:
-    def __init__(self, n):
-        self.parent = [i for i in range(n)]
-        self.rank = [1 for _ in range(n)]
-    
-    # make a and b part of the same component
-    # union by rank optimization
-    def union(self, a, b):
-        pa = self.find(a)
-        pb = self.find(b)
-        if pa == pb: return
-        if self.rank[pa] > self.rank[pb]:
-            self.parent[pb] = pa
-            self.rank[pa] += self.rank[pb]
-        else:
-            self.parent[pa] = pb
-            self.rank[pb] += self.rank[pa]
-    
-    # find the representative of the 
-    # path compression optimization
-    def find(self, a):
-        if self.parent[a] == a:
-            return a
-        
-        self.parent[a] = self.find(self.parent[a])
-        return self.parent[a]
-    
-
+import heapq
 class Solution:
-    def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        
+    def minCostConnectPoints(self, points):
         n = len(points)
-        edges = []
+        # for simplicity, marking the points with a node value from 0 to (n-1)
+        adjList = {i:[] for i in range(n)}  # key = curr node, value = (dist, other nodes)
         for i in range(n):
+            x1 = points[i][0]; y1 = points[i][1]
             for j in range(i+1, n):
-                dist = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])
-                edges.append((dist, i, j))
+                x2 = points[j][0]; y2 = points[j][1]
+                dist = abs(x1 - x2) + abs(y1 - y2)
+                # as it is a undirected graph, we need to add both i and j to adjList
+                adjList[i].append((dist, j))
+                adjList[j].append((dist, i))
         
-        # sort based on cost (i.e. distance)
-        edges.sort()
-        
-        # using Kruskal's algorithm to find the cost of Minimum Spanning Tree
+        # Prim's Algorithm - Minimum Spanning Tree (MST) 
+        # (In the Dijkstra's Algorithm if we introduce a visited data structure to 
+        # stop cycle in graph then it converts to Prim's Algorithm)
+        visited = set()
         res = 0
-        ds = DisjointSet(n)
-        for cost, u, v in edges:
-            if ds.find(u) != ds.find(v):
-                ds.union(u, v)
-                res += cost
+        minHeap = [(0, 0)]  # (dist, node)
+        while len(visited) < n: # until all nodes a visited
+            dist, node = heapq.heappop(minHeap)
+            if node in visited: continue
+            visited.add(node)
+            res += dist
+            for dn in adjList[node]:  # dn = (dist, node)
+                if dn[1] not in visited:
+                    heapq.heappush(minHeap, dn)
         
         return res

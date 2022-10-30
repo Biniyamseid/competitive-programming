@@ -21,7 +21,7 @@ class Solution:
             visited.add(node)
             
             for dn in graph[node]:
-                if dn[1] not in visited:
+                if n not in visited:
                     #result += d
                     heapq.heappush(minHeap,dn)
         return result

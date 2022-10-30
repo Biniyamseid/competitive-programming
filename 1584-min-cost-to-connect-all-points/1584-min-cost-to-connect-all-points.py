@@ -1,31 +1,30 @@
-import heapq
+from collections import defaultdict
 class Solution:
-    def minCostConnectPoints(self, points):
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        manhattan = lambda x,y : abs(x[0]-y[0]) + abs(x[1]-y[1])
         n = len(points)
-        # for simplicity, marking the points with a node value from 0 to (n-1)
-        adjList = {i:[] for i in range(n)}  # key = curr node, value = (dist, other nodes)
+        graph = defaultdict(list)
         for i in range(n):
-            x1 = points[i][0]; y1 = points[i][1]
-            for j in range(i+1, n):
-                x2 = points[j][0]; y2 = points[j][1]
-                dist = abs(x1 - x2) + abs(y1 - y2)
-                # as it is a undirected graph, we need to add both i and j to adjList
-                adjList[i].append((dist, j))
-                adjList[j].append((dist, i))
+            for j in range(i+1,n):
+                distance = manhattan(points[i],points[j])
+                graph[i].append((distance,j))
+                graph[j].append((distance,i))
         
-        # Prim's Algorithm - Minimum Spanning Tree (MST) 
-        # (In the Dijkstra's Algorithm if we introduce a visited data structure to 
-        # stop cycle in graph then it converts to Prim's Algorithm)
         visited = set()
-        res = 0
-        minHeap = [(0, 0)]  # (dist, node)
-        while len(visited) < n: # until all nodes a visited
-            dist, node = heapq.heappop(minHeap)
-            if node in visited: continue
+        minHeap = [(0,0)]
+        result = 0
+        while len(visited) < n:
+            dist,node = heapq.heappop(minHeap)
+            if node in visited:
+                continue
+            result += dist
             visited.add(node)
-            res += dist
-            for dn in adjList[node]:  # dn = (dist, node)
+            
+            for dn in graph[node]:
                 if dn[1] not in visited:
-                    heapq.heappush(minHeap, dn)
+                    #result += d
+                    heapq.heappush(minHeap,dn)
+        return result
+            
         
-        return res
+        

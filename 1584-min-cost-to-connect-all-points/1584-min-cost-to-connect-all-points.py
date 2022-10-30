@@ -1,42 +1,50 @@
 class DisjointSet:
     def __init__(self, n):
         self.parent = [i for i in range(n)]
-        self.count = n
-        #self.rank = [1 for _ in range(n)]
+        self.rank = [1 for _ in range(n)]
     
     # make a and b part of the same component
     # union by rank optimization
     def union(self, a, b):
         pa = self.find(a)
         pb = self.find(b)
-        if pa == pb: return False
-        self.parent[pb] = pa
-        self.count -= 1
-        return True
-        
+        if pa == pb: return
+        if self.rank[pa] > self.rank[pb]:
+            self.parent[pb] = pa
+            self.rank[pa] += self.rank[pb]
+        else:
+            self.parent[pa] = pb
+            self.rank[pb] += self.rank[pa]
     
     # find the representative of the 
     # path compression optimization
     def find(self, a):
-        while self.parent[a] != a:
-            a = self.parent[a]
-        return a
+        if self.parent[a] == a:
+            return a
+        
+        self.parent[a] = self.find(self.parent[a])
+        return self.parent[a]
+    
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        manhattan = lambda x,y:abs(x[0]-y[0])+abs(x[1]-y[1])
         
         n = len(points)
         edges = []
         for i in range(n):
             for j in range(i+1, n):
-                dist = manhattan(points[i],points[j])
+                dist = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])
                 edges.append((dist, i, j))
-        heapq.heapify(edges)
+        
+        # sort based on cost (i.e. distance)
+        edges.sort()
+        
+        # using Kruskal's algorithm to find the cost of Minimum Spanning Tree
+        res = 0
         ds = DisjointSet(n)
-        res = 0       
-        while edges and ds.count>1:
-            cost,u,v = heapq.heappop(edges)
-            if ds.union(u,v):
+        for cost, u, v in edges:
+            if ds.find(u) != ds.find(v):
+                ds.union(u, v)
                 res += cost
+        
         return res

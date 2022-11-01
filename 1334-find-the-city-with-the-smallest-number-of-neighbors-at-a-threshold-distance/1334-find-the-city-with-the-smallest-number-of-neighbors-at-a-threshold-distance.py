@@ -3,27 +3,38 @@ class Solution:
         graph = collections.defaultdict(list)
         k = distanceThreshold
         
-        for u, v, w in edges:
-            graph[u].append((v, w))
-            graph[v].append((u, w))
-            
-        def numcities(city):
-            heap = [(0, city)]
-            dist = {}
+        for u,v,w in edges:
+            graph[u].append((v,w))
+            graph[v].append((u,w))
+        def numcities(node):
+            heap = [(0,node)]
+            visited = set()
             result = 0
-            
             while heap:
-                cost,node = heapq.heappop(heap)
-                if node in dist:
+                cost,cur_node = heapq.heappop(heap)
+                if cur_node in visited:
                     continue
-                if node != city:
-                    dist[node] = cost
+                if cur_node != node:
                     result += 1
-                for neigh,weight in graph[node]:
-                    if neigh not in dist:
-                        if weight+cost <= k:
-                            heapq.heappush(heap,(weight+cost,neigh))
+                    
+                visited.add(cur_node)
+                
+                for neighbour,new_cost in graph[cur_node]:
+                    if cost+new_cost <= k:
+                        heapq.heappush(heap,(cost+new_cost,neighbour))
             return result
+        result = []
         
-        return max([(numcities(city), city) for city in range(n)], key=lambda x: (-x[0], x[1]))[-1]
-    
+        
+        for i in range(n):
+            result.append(numcities(i))
+        #print(result)
+        minm = float("inf")
+        ans = 0
+        for i,res in enumerate(result):
+            if res <= minm:
+                minm = res
+                ans = i
+                #print(minm,ans)
+        return  ans    
+                    

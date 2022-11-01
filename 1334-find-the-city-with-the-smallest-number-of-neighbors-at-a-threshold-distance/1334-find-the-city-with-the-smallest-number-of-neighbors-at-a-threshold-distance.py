@@ -29,12 +29,5 @@ class Solution:
         for i in range(n):
             result.append(numcities(i))
         #print(result)
-        minm = float("inf")
-        ans = 0
-        for i,res in enumerate(result):
-            if res <= minm:
-                minm = res
-                ans = i
-                #print(minm,ans)
-        return  ans    
+        return max([(numcities(city),city) for city in range(n)],key = lambda x:(-x[0],x[1]))[-1]   
                     

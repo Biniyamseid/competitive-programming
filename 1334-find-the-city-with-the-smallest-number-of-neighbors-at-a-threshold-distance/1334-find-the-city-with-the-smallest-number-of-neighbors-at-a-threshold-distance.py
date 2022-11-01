@@ -6,7 +6,7 @@ class Solution:
             graph[u].append((v, w))
             graph[v].append((u, w))
             
-        def getNumberOfNeighbors(city):
+        def numcities(city):
             heap = [(0, city)]
             dist = {}
             
@@ -23,4 +23,4 @@ class Solution:
                         heapq.heappush(heap, (currW + w, v))
             return len(dist)
         
-        return max([(getNumberOfNeighbors(city), city) for city in range(n)], key=lambda x: (-x[0], x[1]))[-1]
+        return max([(numcities(city), city) for city in range(n)], key=lambda x: (-x[0], x[1]))[-1]

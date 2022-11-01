@@ -1,9 +1,9 @@
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
         n,m = len(heights),len(heights[0])
-        target = (n-1,m-1)
-        heap = [(0,(0,0))]
-        dist = {(0,0):0}
+        target = (0,0)
+        heap = [(0,(n-1,m-1))]
+        dist = {(n-1,m-1):0}
         abs_dif = lambda x,y:abs()
         while heap:
             cost,node = heapq.heappop(heap)

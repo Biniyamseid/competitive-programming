@@ -1,6 +1,7 @@
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
         graph = collections.defaultdict(list)
+        k = distanceThreshold
         
         for u, v, w in edges:
             graph[u].append((v, w))
@@ -9,18 +10,20 @@ class Solution:
         def numcities(city):
             heap = [(0, city)]
             dist = {}
+            result = 0
             
             while heap:
-                currW, u = heapq.heappop(heap)
-                if u in dist:
+                cost,node = heapq.heappop(heap)
+                if node in dist:
                     continue
-                if u != city:    
-                    dist[u] = currW
-                for v, w in graph[u]:
-                    if v in dist:
-                        continue
-                    if currW + w <= distanceThreshold:
-                        heapq.heappush(heap, (currW + w, v))
-            return len(dist)
+                if node != city:
+                    dist[node] = cost
+                    result += 1
+                for neigh,weight in graph[node]:
+                    if neigh not in dist:
+                        if weight+cost <= k:
+                            heapq.heappush(heap,(weight+cost,neigh))
+            return result
         
         return max([(numcities(city), city) for city in range(n)], key=lambda x: (-x[0], x[1]))[-1]
+    

@@ -1,15 +1,13 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
-        for src,dst,c in times:
-            graph[src].append((dst,c))
-        queue = [(0,k)] #(cost,node)
+        for u,v,w in times:
+            graph[u].append((v,w))
         visited = set()
+        heap = [(0,k)] # (cost,node)
         max_cost = 0
-        
-        while queue:
-            #always pop the minimum value
-            cost,node = heapq.heappop(queue)
+        while heap:
+            cost,node = heapq.heappop(heap)
             if node in visited:
                 continue
             visited.add(node)
@@ -18,7 +16,7 @@ class Solution:
             for neighbour in neighbours:
                 new_node,new_cost = neighbour
                 if new_node not in visited:
-                    curr_cost = cost + new_cost
-                    heapq.heappush(queue,(curr_cost,new_node))
+                    heapq.heappush(heap,(cost+new_cost,new_node))
         return max_cost if len(visited) == n else -1
+            
         

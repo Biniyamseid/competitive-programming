@@ -1,16 +1,16 @@
 class Solution:
     def minMutation(self, start: str, end: str, bank: List[str]) -> int:
-        queue = deque([(start,0)])
-        seen = {start}
+        queue = deque([(0,start)])
+        visited = set()
+        def isneighbour(a,b):
+            return sum([1 for i in range(len(a)) if a[i]!= b[i]])
         while queue:
-            node,steps = queue.popleft()
+            cost,node = queue.popleft()
             if node == end:
-                return steps
-            for c in "ACGT":
-                for i in range(len(node)):
-                    neighbour = node[:i] + c + node[i+1:]
-                    #print(neighbour,i)
-                    if neighbour not in seen and neighbour in bank:
-                        queue.append((neighbour,steps+1))
-                        seen.add(neighbour)
+                return cost
+            for nei in bank:
+                if nei not in visited:
+                    if isneighbour(node,nei)==1:
+                        visited.add(nei)
+                        queue.append((cost+1,nei))
         return -1

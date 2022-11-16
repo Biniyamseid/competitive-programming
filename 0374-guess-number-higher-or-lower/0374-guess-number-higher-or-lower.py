@@ -8,17 +8,17 @@
 class Solution:
     def guessNumber(self, n: int) -> int:
         num = n//2
-        left = 0
+        left = 1
         right = n
-        while left < right:
+        while left <= right:
             middle = (left + right)//2
-            if guess(middle) == 0:
+            result = guess(middle)
+            if result == 0:
                 return middle
-            elif guess(middle) <0:
+            elif result <0:
                 right = middle-1
             else:
                 left = middle +1
-        return left
             
         
         

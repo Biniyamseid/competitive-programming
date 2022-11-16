@@ -1,11 +1,13 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
-        rows = len(matrix)
-        colum = len(matrix[0])
-        dp = {} #(r,c)=> length
+        row = len(matrix)
+        colm = len(matrix[0])
+        dp = {}
+        res = 1
         def dfs(r,c,prev):
-            if r<0 or r>=rows or c<0 or c>= colum or\
-            matrix[r][c] <= prev:
+            nonlocal res
+            if r<0 or r>=row or c<0 or c>= colm or\
+            matrix[r][c]<= prev:
                 return 0
             if (r,c) in dp:
                 return dp[(r,c)]
@@ -16,8 +18,9 @@ class Solution:
             res = max(res,1+dfs(r,c-1,matrix[r][c]))
             dp[(r,c)] = res
             return res
-        for r in range(rows):
-            for c in range(colum):
+        for r in range(row):
+            for c in range(colm):
                 dfs(r,c,-1)
         return max(dp.values())
+        
         

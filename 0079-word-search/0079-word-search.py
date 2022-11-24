@@ -1,36 +1,42 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        ROWS, COLS = len(board), len(board[0])
-        path = set()
-
-        def dfs(r, c, i):
-            if i == len(word):
-                return True
-            if (
-                min(r, c) < 0
-                or r >= ROWS
-                or c >= COLS
-                or word[i] != board[r][c]
-                or (r, c) in path
-            ):
+        ##
+        R = len(board)
+        C = len(board[0])
+        
+        # if len of word is greater than total number of character in board
+        if len(word) > R*C:
+            return False
+        
+        count = Counter(sum(board, []))
+        
+        # count of a LETTER in word is Greater than count of it being in board
+        for c, countWord in Counter(word).items():
+            if count[c] < countWord:
                 return False
-            path.add((r, c))
-            res = (
-                dfs(r + 1, c, i + 1)
-                or dfs(r - 1, c, i + 1)
-                or dfs(r, c + 1, i + 1)
-                or dfs(r, c - 1, i + 1)
-            )
-            path.remove((r, c))
-            return res
-
-        # To prevent TLE,reverse the word if frequency of the first letter is more than the last letter's
-        count = defaultdict(int, sum(map(Counter, board), Counter()))
-        if count[word[0]] > count[word[-1]]:
-            word = word[::-1]
             
-        for r in range(ROWS):
-            for c in range(COLS):
-                if dfs(r, c, 0):
+        # if count of 1st letter of Word(A) is Greater than that of Last One in Board(B). 
+        # Reverse Search the word then search as less case will be searched.
+        if count[word[0]] > count[word[-1]]:
+             word = word[::-1]
+        
+        ##
+        
+        
+        
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                if self.backtracking(i, j,word,board):
                     return True
         return False
+    def backtracking(self,i, j,word,board):
+            if len(word) == 0:
+                return True
+            if i < 0 or i >= len(board) or j < 0 or j >= len(board[i]):
+                return False
+            if board[i][j] == word[0]:
+                board[i][j] = "~"
+                if self.backtracking(i+1, j, word[1:],board) or self.backtracking(i-1, j, word[1:],board) or self.backtracking(i, j+1, word[1:],board) or self.backtracking( i, j-1, word[1:],board):
+                    return True
+                board[i][j] = word[0]
+            return False

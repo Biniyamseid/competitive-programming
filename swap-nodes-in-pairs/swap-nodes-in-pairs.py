@@ -9,7 +9,8 @@ class Solution:
             return head
         first = head
         second = head.next
-        first.next = self.swapPairs(second.next)
+        third = head.next.next
+        first.next = self.swapPairs(third)
         second.next = first
         return second
         

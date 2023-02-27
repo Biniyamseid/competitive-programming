@@ -4,7 +4,7 @@ class Solution:
         res = []
         for i in range(n):
             res.append([1]*(i+1))
-
+        @cache
         def recur(i):
             if i<2:
                 recur(i+1)

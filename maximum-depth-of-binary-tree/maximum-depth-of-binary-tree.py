@@ -12,7 +12,6 @@ class Solution:
     def maxDepths(self,root):
         if not root:
             return 0
-        ans1 = 1+self.maxDepths(root.left) 
-        ans2 = 1+ self.maxDepths(root.right)
-        return max(ans1,ans2)
+        return max(1+self.maxDepths(root.left),1+ self.maxDepths(root.right))
+        
         

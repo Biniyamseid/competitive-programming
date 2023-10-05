@@ -3,15 +3,18 @@ class Solution:
         left = 0
         n = len(nums)
         right = n-1
-        if len(nums)==1 and nums[0]==target:
-            return 0
-        while left<=right:
-            mid = (left+right)//2
+        left, right = 0, len(nums) - 1
+        while left < right:
+            mid = (left + right) // 2
             if nums[mid] == target:
                 return mid
-            if nums[mid]>target:
-                right = mid-1
+            elif nums[mid] < target:
+                left = mid + 1
             else:
-                left = mid+1
+                right = mid
+
+        # Post-processing:
+        # End Condition: left == right
+        if nums[left] == target:
+            return left
         return -1
-        

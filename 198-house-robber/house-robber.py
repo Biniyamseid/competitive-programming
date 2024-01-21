@@ -5,7 +5,7 @@ class Solution:
         dp = nums[:2]
         dp[1] = max(dp)
         for i in range(2,len(nums)):
-            cur = max(dp[i-2]+nums[i],nums[i],dp[i-1])
+            cur = max(dp[i-2]+nums[i],dp[i-1])
             dp.append(cur)
         print(dp)
         return max(dp[-1],dp[-2])

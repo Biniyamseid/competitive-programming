@@ -18,7 +18,6 @@ class Solution:
                         oddcount+=1
                 # print(oddcount,counter)
                 if oddcount>1:
-                    
                     return
                 else:
                     ans[0]+=1
@@ -26,7 +25,6 @@ class Solution:
             counter[node.val]+=1
             dfs(node.left,counter.copy())
             dfs(node.right,counter.copy())
-           
         dfs(root,defaultdict(int))
         return ans[0]
 

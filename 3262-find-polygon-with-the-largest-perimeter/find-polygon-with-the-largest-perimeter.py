@@ -10,7 +10,6 @@ class Solution:
             if previous>nums[i]:
                 ans = previous+nums[i]
             previous+=nums[i]
-        
         return ans
 
         

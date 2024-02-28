@@ -13,10 +13,10 @@ class Solution:
             nonlocal ans
             if not node:
                 return
-            if node.right and depth>maxdepth:
-                ans = node.right.val
-            if node.left and depth>maxdepth:
-                ans = node.left.val
+            # if node.right and depth>maxdepth:
+            #     ans = node.right.val
+            # if node.left and depth>maxdepth:
+            #     ans = node.left.val
             if node and depth>maxdepth:
                 ans = node.val
             maxdepth = max(depth,maxdepth)

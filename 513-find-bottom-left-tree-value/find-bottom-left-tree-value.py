@@ -19,7 +19,6 @@ class Solution:
                 ans = node.left.val
             if node and depth>maxdepth:
                 ans = node.val
-            print(depth,maxdepth,node.val,ans)
             maxdepth = max(depth,maxdepth)
             dfs(node.left,depth+1)
             dfs(node.right,depth+1)

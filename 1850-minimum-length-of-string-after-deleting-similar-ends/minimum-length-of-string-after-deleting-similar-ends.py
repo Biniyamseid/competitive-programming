@@ -8,8 +8,5 @@ class Solution:
                 l+=1
             while l<=r and s[prev]==s[r]:
                 r-=1
-            # l+=1
-            # r-=1
-        print(r,l)
         return r-l+1
         

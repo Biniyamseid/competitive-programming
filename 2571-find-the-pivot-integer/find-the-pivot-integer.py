@@ -3,7 +3,6 @@ class Solution:
         total = sum([i for i in range(1,n+1)])
         s = 0
         for i in range(1,n+1):
-            print(s,total,(total-i)/2)
             if s==(total-i)/2:
                 return i
             s+=i

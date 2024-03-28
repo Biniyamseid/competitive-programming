@@ -12,8 +12,8 @@ class Solution:
 
                 if c[curr]==0:
                     del c[curr]
-            if c[curr] == 0:
-                del c[curr]
+            # if c[curr] == 0:
+            #     del c[curr]
             ans = max(i-l+1,ans)
         return ans
             

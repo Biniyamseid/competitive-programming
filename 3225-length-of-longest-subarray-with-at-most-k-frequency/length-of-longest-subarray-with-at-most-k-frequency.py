@@ -10,8 +10,8 @@ class Solution:
                 c[nums[l]]-=1
                 l+=1
 
-                if c[curr]==0:
-                    del c[curr]
+                # if c[curr]==0:
+                #     del c[curr]
             # if c[curr] == 0:
             #     del c[curr]
             ans = max(i-l+1,ans)

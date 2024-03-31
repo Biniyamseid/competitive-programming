@@ -17,7 +17,10 @@ class Solution:
                 ans = 0
             elif a<0 or c<0:
                 ans = 0
+            elif b > min(a,c):
+                ans =0
             else:
+                print(a,c,b)
                 res+= max(0,min(a,c)-b)
         return res
         

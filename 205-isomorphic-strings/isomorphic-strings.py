@@ -39,6 +39,6 @@ class Solution:
                 notsame.add(b)
             
 
-        print(checker)
+    
         return True
         

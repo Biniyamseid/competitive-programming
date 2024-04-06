@@ -32,19 +32,14 @@ class Solution:
                         omitbackward.add(i)
                     elif stackbackward[-1] == ")":
                         stackbackward.pop()
-        print(omitforward)
-        print(stackforward)
+     
         ans = ""
         for i,letter in enumerate(s):
             if i not in omitforward and i not in omitbackward:
                 ans += letter
         
 
-
-        print(stackbackward)
-        print(omitbackward)
-        print(omitbackward)
         return ans
-        return "lee(t(c)o)de"
+
 
         

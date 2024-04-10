@@ -1,20 +1,36 @@
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+        # N = len(deck)
+        # result = [0]*N
+        # skip = False
+        # index_in_deck = 0
+        # index_in_result = 0
+        # deck.sort()
+
+        # while index_in_deck < N:
+        #     if result[index_in_result] == 0:
+        #         if not skip:
+        #             result[index_in_result] = deck[index_in_deck]
+        #             index_in_deck += 1
+        #         skip = not skip
+        #     index_in_result = (index_in_result + 1)%N
+
+        # return result
         N = len(deck)
-        result = [0]*N
-        skip = False
-        index_in_deck = 0
-        index_in_result = 0
+        queue = deque()
+        
+        for i in range(N):
+            queue.append(i)
+        
         deck.sort()
 
-        while index_in_deck < N:
-            if result[index_in_result] == 0:
-                if not skip:
-                    result[index_in_result] = deck[index_in_deck]
-                    index_in_deck += 1
-                skip = not skip
-            index_in_result = (index_in_result + 1)%N
+        result = [0]*N
 
+        for card in deck:
+            result[queue.popleft()] = card
+
+            if queue:
+                queue.append(queue.popleft())
         return result
         # ans = sorted(deck)
         # answer = []

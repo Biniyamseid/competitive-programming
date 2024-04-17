@@ -8,10 +8,10 @@ class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
         lst = []
         def dfs(root,cur):
-            if not root:
-                if cur:
-                    lst.append(cur[::-1])
-                return cur
+            # if not root:
+            #     if cur:
+            #         lst.append(cur[::-1])
+            #     return cur
             if root.left:
                 dfs(root.left,cur+chr(ord("a")+int(root.left.val)))
             if root.right:

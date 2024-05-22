@@ -1,6 +1,6 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
-        """   """
+      
         already = []
         def ispalindrome(string):
             return string == string[::-1]

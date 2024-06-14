@@ -17,9 +17,9 @@ class Solution:
         for i in range(minm+1,len(nums)+max(nums)+1):
             if i not in set1:
                 nextint.append(i)
-        print(nextint)
-        for i in range(max(nextint)+1,max(nextint)+1+len(nums)):
-            nextint.append(i)
+    
+        # for i in range(max(nextint)+1,max(nextint)+1+len(nums)):
+        #     nextint.append(i)
         ans = 0
         i = 0
         visited = set()

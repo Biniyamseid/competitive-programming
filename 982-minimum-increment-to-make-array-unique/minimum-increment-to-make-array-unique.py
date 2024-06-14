@@ -29,7 +29,7 @@ class Solution:
                 while nextint[i]<=num:
                     i+=1
             if count[num]>1 and num in visited:
-                print(num,i,nextint[i])
+                
                 ans += abs(nextint[i]-num)
                 i+=1
             visited.add(num)

@@ -13,14 +13,12 @@ class Solution:
             if l<0:
                 break
         return ans
-
-
         """
         list_zip = list(zip(difficulty,profit))
         list_zip.sort()
-        # print(list_zip)
+       
         difficulty,profit = zip(*list_zip)
-        # print(difficulty,profit)
+        
         profit = list(profit)
         max_so_far = 0
         for i,j in enumerate(difficulty):
@@ -32,9 +30,7 @@ class Solution:
         worker.sort(reverse=True)
         l = len(difficulty)-1
         for i in worker:
-            # print(i)
             while difficulty[l]>i and l>=0:
-                # print(difficulty,difficulty[l],l,i)
                 l-=1
             if l<0:
                 break

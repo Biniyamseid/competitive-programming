@@ -26,7 +26,7 @@ class Solution:
                 if i>node.val:
                     node_sum+=i
                 else:
-                    break
+                    pass
             node.val+=node_sum
         replace_values(root)
         return root

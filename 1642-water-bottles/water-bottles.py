@@ -6,10 +6,10 @@ class Solution(object):
         :rtype: int
         """
         a = numBottles
-        recurr = (numBottles)*2
+        recurr = (numBottles)
 
         ans = numBottles
-        while recurr>0:
+        while recurr>=0:
             temp =  numBottles % numExchange
             ans += numBottles//numExchange
             

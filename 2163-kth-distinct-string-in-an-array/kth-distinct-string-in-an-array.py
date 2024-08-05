@@ -7,8 +7,6 @@ class Solution:
             if i  in s:
                 sets.add(i)
             s.add(i)
-            
-        print(sets)
            
         for i in arr:
             if i not in sets:

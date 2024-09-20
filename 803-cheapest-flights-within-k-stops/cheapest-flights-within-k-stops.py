@@ -46,8 +46,8 @@ class Solution:
         for i in range(k+1):
             curr = prices.copy()
             for s,d,p in flights:
-                # if prices[s]==float(inf):
-                #     continue
+                if prices[s]==float(inf):
+                    continue
                 if prices[s]+p <curr[d]:
                     curr[d] = prices[s]+p
             prices = curr

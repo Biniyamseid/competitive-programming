@@ -12,10 +12,10 @@ class Solution:
 
 
         for i in range(0,len(s)):
-           
+            #check from 0 to n-1
             if i>0 and  s[i] == s[i-1]:
                 if check(left,i):return True
-             
+            #if i == 0
             elif i==0:
                 if check(left,i):return True
             else:

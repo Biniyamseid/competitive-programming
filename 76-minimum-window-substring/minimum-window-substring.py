@@ -3,38 +3,34 @@ class Solution:
         if not s or not t:
             return ""
 
-        dictT = defaultdict(int)
+        # Character frequency map for t
+        char_map = [0] * 128  
         for c in t:
-            dictT[c] += 1
+            char_map[ord(c)] += 1  
 
-        required = len(dictT)
-        l, r = 0, 0
-        formed = 0
+        left, right = 0, 0  
+        counter = len(t)  
+        min_len = float('inf')  
+        head = 0  
 
-        windowCounts = defaultdict(int)
-        ans = [-1, 0, 0]
+        while right < len(s):
+            if char_map[ord(s[right])] > 0:
+                counter -= 1  
+            char_map[ord(s[right])] -= 1  
+            right += 1  
 
-        while r < len(s):
-            c = s[r]
-            windowCounts[c] += 1
+            while counter == 0:  # Valid window found
+                if right - left < min_len:
+                    min_len = right - left  
+                    head = left  
 
-            if c in dictT and windowCounts[c] == dictT[c]:
-                formed += 1
+                # Remove the leftmost character and update counter
+                char_map[ord(s[left])] += 1  
+                if char_map[ord(s[left])] > 0:
+                    counter += 1  
+                left += 1  
 
-            while l <= r and formed == required:
-                c = s[l]
+        return "" if min_len == float('inf') else s[head:head + min_len]
 
-                if ans[0] == -1 or r - l + 1 < ans[0]:
-                    ans[0] = r - l + 1
-                    ans[1] = l
-                    ans[2] = r
 
-                windowCounts[c] -= 1
-                if c in dictT and windowCounts[c] < dictT[c]:
-                    formed -= 1
-
-                l += 1
-
-            r += 1
-
-        return "" if ans[0] == -1 else s[ans[1]:ans[2] + 1]
+        

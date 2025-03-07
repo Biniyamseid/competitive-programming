@@ -1,39 +1,26 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        prefix_product = 1
-        postfix_product = 1
-        result = [0]*n
-        for i in range(n):
-            result[i] = prefix_product
-            prefix_product *= nums[i]
-        for i in range(n-1,-1,-1):
-            result[i]*=postfix_product
-            postfix_product *= nums[i]
-        return result
+        answer = [1 for i in range(len(nums))]
+        prefix = [1 for i in range(len(nums))]
+        suffix = [1 for i in range(len(nums))]
+        print(suffix)
+        for i in range(1,len(nums)):
+            prefix[i]=nums[i-1]*prefix[i-1]
+        for i in range(len(nums)-2,-1,-1):
+            print(i)
+            suffix[i]= nums[i+1]*suffix[i+1]
+        # suffix = suffix[::-1]
+        print(prefix,suffix)
+        for i in range(len(nums)):
+            if i ==0:
+                answer[i] = suffix[i]
+            if i == len(nums)-1:
+                answer[i] = prefix[i]
+            else:
+                answer[i] = prefix[i]*suffix[i]
+
+        return answer
 
 
-
-
-
-        # left = 1
-        # right = 1
-        # leftarr=[]
-        # rightarr = nums.copy()
-        # res = []
-        # for i in nums:
-        #     leftarr.append(left)
-        #     left*=i
-        # leftarr.extend([1,1,1])
-        # for i in range(len(nums)-1,-1,-1):
-        #     rightarr[i]=right
-        #     right*=nums[i]
-        # rightarr.append(1)
-        # rightarr.extend([1,1,1,1])
-        # print(leftarr,rightarr)
-        # for i in range(len(nums)):
-        #     if i+1<len(rightarr) and i<len(leftarr):
-        #         res.append(leftarr[i]*rightarr[i+1])
-        # return res
+                    
         
-

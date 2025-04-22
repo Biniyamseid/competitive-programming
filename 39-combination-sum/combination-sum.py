@@ -7,7 +7,7 @@ class Solution:
             if tot>target:
                 return
             print(array)
-            if len(array) >= 1 and sum(array) == target:
+            if len(array) >= 1 and tot == target:
                 answer.append(array.copy())
                 return
             for j in range(i,len(candidates)):

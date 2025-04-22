@@ -3,8 +3,8 @@ class Solution:
         nums.sort()
         ans = []
         def backtrack(sol,n):
-            if len(sol)== len(set(sol)):
-                ans.append(sol.copy())
+      
+            ans.append(sol.copy())
             for i in range(n,len(nums)):
                 sol.append(nums[i])
                 backtrack(sol,i+1)

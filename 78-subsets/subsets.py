@@ -3,7 +3,7 @@ class Solution:
         answer = []
         nums.sort()
         def backtrack(array,n):
-            answer.append(array[:])
+            answer.append(array.copy())
             for i in range(n,len(nums)):
                 array.append(nums[i])
                 backtrack(array,i+1)

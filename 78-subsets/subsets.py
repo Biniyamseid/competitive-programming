@@ -1,15 +1,14 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        answer = []
         nums.sort()
-        ans = []
-        def backtrack(sol,n):
-      
-            ans.append(sol.copy())
+        def backtrack(array,n):
+            answer.append(array[:])
             for i in range(n,len(nums)):
-                sol.append(nums[i])
-                backtrack(sol,i+1)
-                sol.pop()
-
+                array.append(nums[i])
+                backtrack(array,i+1)
+                array.pop()
         backtrack([],0)
-        return ans
+        return answer
+
         

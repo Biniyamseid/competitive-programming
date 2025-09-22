@@ -8,16 +8,32 @@ class Solution:
         # make a map of number to frequency
         # find the maximum frequency
         # find numbers with this maxfrequency 
-        # multiple count with frequency
 
-        frequency_map = {i:0 for i in nums}
+
+        frequency = [0]*100
         for num in nums:
-            frequency_map[num]+=1
-        max_frequency = max([j for i,j in frequency_map.items()])
-        max_frequent_number_count = 0
-        for i,j in frequency_map.items():
-            if j == max_frequency:
-                max_frequent_number_count += 1
-        return max_frequency * max_frequent_number_count
+            frequency[num-1]+=1
+        frequency.sort()
+        max_freq = frequency[-1]
+        total_sum = 0
+        for freq in frequency[::-1]:
+            if freq!= max_freq:
+                break
+            total_sum += freq
+     
+        return total_sum
+
+
+        # # multiple count with frequency
+
+        # frequency_map = {i:0 for i in nums}
+        # for num in nums:
+        #     frequency_map[num]+=1
+        # max_frequency = max([j for i,j in frequency_map.items()])
+        # max_frequent_number_count = 0
+        # for i,j in frequency_map.items():
+        #     if j == max_frequency:
+        #         max_frequent_number_count += 1
+        # return max_frequency * max_frequent_number_count
 
         

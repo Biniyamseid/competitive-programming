@@ -1,15 +1,25 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        @cache
-        def dfs(start,end):
-            nonlocal result
-            if s[start:end+1] == s[start:end+1][::-1]:
-                result +=1
-            if start<end:
-                dfs(start+1,end)
-                dfs(start,end-1)
-        result =0
-        dfs(0,len(s)-1)
-        return result
+        count = 0
+        for i in range(len(s)):
+            l = r= i
+            while l>=0 and r<len(s) and s[l]==s[r]:
+                count += 1
+                l-=1
+                r+=1
+            if i+1 <len(s) and s[i] == s[i+1]:
+                l = i
+                r=i+1
+                while l>=0 and r<len(s) and s[l]==s[r]:
+                    count += 1
+                    l-=1
+                    r+=1
+
+        return count
             
+
+                # it is palindrome
+        # start from end to present
+        
+
         

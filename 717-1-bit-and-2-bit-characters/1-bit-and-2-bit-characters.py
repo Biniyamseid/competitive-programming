@@ -1,6 +1,6 @@
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:
-        canbelast = False
+        canbefirst = False
         i =0
         while i<len(bits):
             curr = bits[i]
@@ -8,12 +8,10 @@ class Solution:
                 return False
             if bits[i]==1:
                 i+=1
-                canbelast = False
+                canbefirst = False
             elif bits[i]==0:
-                # print("hello",i)
-                canbelast=True
+                canbefirst=True
             i+=1
-            # print(i,canbelast,curr)
-        return canbelast
+        return canbefirst
     
         

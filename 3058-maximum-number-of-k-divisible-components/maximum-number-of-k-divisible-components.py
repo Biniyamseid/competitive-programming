@@ -87,7 +87,7 @@ class Solution:
             nonlocal ans
 
             # start with this node’s value mod k
-            total = values[node] % k
+            total = values[node]
 
             for nei in g[node]:
                 if nei == parent:

@@ -4,6 +4,10 @@ class Solution:
         total = sum(nums)
         even = not (total%2)
         prefix = 0
+        if even:
+            return len(nums)-1
+        else:
+            return 0
         for idx,num in enumerate(nums):
             if idx==len(nums)-1:
                 break

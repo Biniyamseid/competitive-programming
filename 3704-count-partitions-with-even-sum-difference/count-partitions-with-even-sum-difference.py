@@ -8,8 +8,10 @@ class Solution:
             if idx==len(nums)-1:
                 break
             prefix+=num
-            if ((2*prefix)-total)%2==0:
+            if even:
                 result+=1
+            # if ((2*prefix)-total)%2==0:
+            #     result+=1
             # if  ((prefix)-(total-prefix))%2 ==0:
             #     result+=1
         return result

@@ -4,12 +4,7 @@ class Solution:
         # first_appearance , last appearance
         # 4,8,4,8
         # {}
-        dp = [0]*(len(nums)+1)
-        n = len(nums)
-        if len(nums)>=3:
-            dp[3]=1
-            for i in range(4,n+1):
-                dp[i] = dp[i-1]+(((i-1)*(i-2))//2)
+        # if count is zero handle it
     
 
 
@@ -41,6 +36,12 @@ class Solution:
             index_tracker[num][1]=i
             counter[num]+=1
         if counter[0]>=3:
+            dp = [0]*(len(nums)+1)
+            n = len(nums)
+            if len(nums)>=3:
+                dp[3]=1
+                for i in range(4,n+1):
+                    dp[i] = dp[i-1]+(((i-1)*(i-2))//2)
             answer+=dp[counter[0]]
         return answer%(10**9+7)
             

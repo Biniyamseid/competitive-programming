@@ -4,9 +4,17 @@ class Solution:
         # first_appearance , last appearance
         # 4,8,4,8
         # {}
+        dp = [0]*(len(nums)+1)
+        n = len(nums)
+        if len(nums)>=3:
+            dp[3]=1
+            for i in range(4,n+1):
+                dp[i] = dp[i-1]+(((i-1)*(i-2))//2)
+    
+
+
         zero_count = 0
-        def sequence_term(n: int) -> int:
-            return (n - 2) * (n - 1) * n // 6 
+       
         counter = defaultdict(int)
         visited= set()
         double_counter = defaultdict(int)
@@ -33,7 +41,7 @@ class Solution:
             index_tracker[num][1]=i
             counter[num]+=1
         if counter[0]>=3:
-            answer+=sequence_term(counter[0])
+            answer+=dp[counter[0]]
         return answer%(10**9+7)
             
 

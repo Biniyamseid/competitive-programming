@@ -5,23 +5,21 @@ class Solution:
         answer = 0
         for i in range(n):
             count, divisors = 0,[]
-            for j in range(1,math.ceil(math.sqrt(nums[i]))):
-                # print(nums[i],j)
+            r = math.sqrt(nums[i])
+            for j in range(1,math.ceil(r)):
                 if nums[i]%j == 0:
                     divisors.append(j)
                     divisors.append(nums[i]//j)
                     count +=2
-                # print(divisors)
                 if count >4:
                     count = 0
                     divisors = []
                     break
-            if nums[i]%math.sqrt(nums[i])==0:
+            if nums[i]%r==0:
                 count +=1
-                divisors.append(math.sqrt(nums[i]))
+                divisors.append(r)
 
             if count ==4:
-                print(answer,count,divisors)
                 answer+=sum(divisors)
         
         return answer

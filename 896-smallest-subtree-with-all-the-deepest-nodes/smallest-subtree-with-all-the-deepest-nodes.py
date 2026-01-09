@@ -11,29 +11,22 @@ class Solution:
                 return 0
             return 1+ max(get_depth(Node.left),get_depth(Node.right))
         indepth = []
-        single= []
-        ans = []
         deepest = get_depth(root)
         deepth_of_nodes = {}
-        
         def sol(Node,depth):
-            nonlocal ans
             nonlocal deepest
             if not Node:
                 return depth
             deepth_of_nodes[Node.val]=depth
             if depth == deepest-1:
                 indepth.append(Node.val)
-           
             sol(Node.left,depth+1)
             sol(Node.right,depth+1)
         sol(root,0)
-        if len(indepth)==1:
-            return TreeNode(indepth[0])
-        else:
-            k = len(indepth)
-            self.answer = None
-            def findanc(Node):
+      
+        k = len(indepth)
+        self.answer = None
+        def findanc(Node):
                 if not Node:
                     return 0
                 left =findanc(Node.left)
@@ -43,8 +36,8 @@ class Solution:
                 if total==k and self.answer == None:
                     self.answer = Node
                 return total
-            findanc(root)
-            return self.answer
+        findanc(root)
+        return self.answer
 
        
         

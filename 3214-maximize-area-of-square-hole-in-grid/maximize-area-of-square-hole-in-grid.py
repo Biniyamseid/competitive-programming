@@ -19,12 +19,9 @@ class Solution:
                 conseq = 0
         curr = 0
         conseq=0
-        print(vBars)
         for i in range(1,len(vBars)):
             if vBars[i]==vBars[i-1]+1:
-                print("hello")
                 if conseq:
-                    print("hello1")
                     curr+=1
                 else: 
                     curr =2
@@ -41,11 +38,7 @@ class Solution:
             maxhconsec=1
         if maxvconsec<1: 
             maxvconsec=1
-        
         ans = min(maxhconsec,maxvconsec)
-        # if len(hBars)==len(vBars):
-        #     if ans ==1: return 4
-        #     ans-=1
         return (ans+1)*(ans+1)
         
 

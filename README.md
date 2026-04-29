@@ -28,3 +28,19 @@ I welcome contributions from fellow programmers and enthusiasts! If you'd like t
 Let's continue to learn, grow, and excel in the world of competitive programming together!
 
 Happy Coding! 🚀
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Hash Table
+|  |
+| ------- |
+| [3889-mirror-frequency-distance](https://github.com/Biniyamseid/competitive-programming/tree/master/3889-mirror-frequency-distance) |
+## String
+|  |
+| ------- |
+| [3889-mirror-frequency-distance](https://github.com/Biniyamseid/competitive-programming/tree/master/3889-mirror-frequency-distance) |
+## Counting
+|  |
+| ------- |
+| [3889-mirror-frequency-distance](https://github.com/Biniyamseid/competitive-programming/tree/master/3889-mirror-frequency-distance) |
+<!---LeetCode Topics End-->
